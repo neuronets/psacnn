@@ -1,0 +1,7 @@
+Dockerfile
+.git
+*.tar.gz
+*.nii.gz
+*.mgz
+**/__pycache__
+*.pyc
