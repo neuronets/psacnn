@@ -1,12 +1,9 @@
-import os
-import sys
-from setuptools import setup
-from glob import glob
+from setuptools import setup, find_packages
 
 
 setup(
     name='psacnn_brain_segmentation',
-    packages=['psacnn_brain_segmentation', 'psacnn_brain_segmentation.predict','psacnn_brain_segmentation.deeplearn_utils' ],
+    packages=find_packages(),
     url='https://surfer.nmr.mgh.harvard.edu/',
     license='FreeSurfer Software License Agreement',
     author='Amod S. Jog',
@@ -29,9 +26,10 @@ setup(
                       'matplotlib',
                       'seaborn',
                       'configparser'],
-    dependency_links=[],
-    provides=['psacnn_brain_segmentation'],
+    entry_points={
+        "console_scripts": [
+            "psacnn=psacnn_brain_segmentation.predict:psacnn_workflow"
+            ],
+        },
     package_data={'psacnn_brain_segmentation': ['model_files/*.h5']},
-    scripts=glob('bin/*')
-
 )
